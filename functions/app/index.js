@@ -28,20 +28,14 @@ export default function expressApp(functionName) {
       ? `/${functionName}`
       : `/.netlify/functions/${functionName}/`;
 
-  app.use(`${routerBasePath}/test`, testRoutes);
-  app.use(`${routerBasePath}/users`, userRoutes);
+  router.use(`${routerBasePath}/test`, testRoutes);
+  router.use(`${routerBasePath}/users`, userRoutes);
 
-  app.use(notFound);
-  app.use(errorHandler);
+  router.use(notFound);
+  router.use(errorHandler);
   /*   router.get("/hello/", function (req, res) {
     res.send("hello world");
   }); */
-
-  // Attach logger
-  app.use(morgan(customLogger));
-
-  // Setup routes
-  app.use(routerBasePath, router);
 
   // Apply express middlewares
   router.use(cors());
