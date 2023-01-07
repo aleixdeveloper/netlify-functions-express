@@ -33,9 +33,9 @@ export default function expressApp(functionName) {
 
   app.use(notFound);
   app.use(errorHandler);
-  router.get("/hello/", function (req, res) {
+  /*   router.get("/hello/", function (req, res) {
     res.send("hello world");
-  });
+  }); */
 
   // Attach logger
   app.use(morgan(customLogger));
