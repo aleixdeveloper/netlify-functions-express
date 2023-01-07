@@ -5,10 +5,18 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import compression from "compression";
 import customLogger from "../utils/logger";
+import testRoutes from "../routes/testRoutes.js";
+import userRoutes from "../routes/userRoutes.js";
+import { connectDB } from "../config/db.js";
+import { notFound, errorHandler } from "../middleware/errorMiddleware.js";
 
 /* My express App */
 export default function expressApp(functionName) {
+  dotenv.config();
+  connectDB();
+
   const app = express();
+
   const router = express.Router();
 
   // gzip responses
@@ -20,6 +28,11 @@ export default function expressApp(functionName) {
       ? `/${functionName}`
       : `/.netlify/functions/${functionName}/`;
 
+  app.use(`${routerBasePath}/test`, testRoutes);
+  app.use(`${routerBasePath}/users`, userRoutes);
+
+  app.use(notFound);
+  app.use(errorHandler);
   router.get("/hello/", function (req, res) {
     res.send("hello world");
   });
