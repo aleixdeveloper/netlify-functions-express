@@ -1,3 +1,13 @@
 [build]
-  command = "npm install && npm run build"
-  functions = "functions"
+  command = "npm install"
+  functions = "netlify/functions"
+
+[dev]
+  command = "npx serve ."
+  targetPort = 3000
+
+[functions]
+  directory = "netlify/functions"
+
+[context.production]
+  node_bundler = "esbuild"
