@@ -30,8 +30,10 @@
     "nodemon": "^3.1.14",
     "serverless-http": "^2.3.0"
   },
-  "overrides": {
-    "minimatch": "10.2.1"
+  "pnpm": {
+    "overrides": {
+      "minimatch": "10.2.2"
+    }
   },
   "proxy": {
     "/.netlify/functions": {
