@@ -15,7 +15,7 @@
     "glob-parent": "^6.0.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.3",
-    "morgan": "^1.10.0",
+    "morgan": "^1.12.1",
     "multer": "^2.0.2",
     "serverless-http": "^1.6.0"
   },
